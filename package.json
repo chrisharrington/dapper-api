@@ -1,0 +1,27 @@
+{
+  "name": "dapper-service",
+  "version": "0.0.0",
+  "description": "A service to provide widget data to the Dapper Developer blog.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrisharrington/dapper-service.git"
+  },
+  "author": "Chris Harrington",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisharrington/dapper-service/issues"
+  },
+  "homepage": "https://github.com/chrisharrington/dapper-service",
+  "dependencies": {
+    "express": "^4.10.6",
+    "moment": "^2.8.4",
+    "bluebird": "^2.5.3",
+    "underscore": "^1.7.0",
+    "github": "^0.2.3"
+  }
+}
