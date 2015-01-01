@@ -3,6 +3,7 @@ var _ = require("underscore"),
 
 module.exports = {
     repos: function(repos) {
+        var count = 0;
         return _.map(repos, function(repo) {
             return {
                 id: repo.id,

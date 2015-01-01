@@ -31,7 +31,7 @@ module.exports = function(token) {
                 direction: "desc"
             }, function(err, repos) {
                 if (err) reject(err);
-                else resolve(repos);
+                else resolve(mapper.repos(repos));
             });
         });
     };
