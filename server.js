@@ -7,14 +7,7 @@ var express = require("express"),
 
 app.use(crossDomain);
 
-app.get("/github", function (req, res, next) {
-    var github = new GitHub(config.githubApiKey);
-    github.repos().then(function(repos) {
-        res.status(200).json(repos); 
-    }).catch(function() {
-        res.status(500).send("An error has occurred.");  
-    });
-});
+require("./routes")(app);
 
 var server = app.listen(8081, function () {
     var host = server.address().address
