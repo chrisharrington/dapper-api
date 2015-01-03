@@ -23,6 +23,6 @@
     "bluebird": "^2.5.3",
     "underscore": "^1.7.0",
     "github": "^0.2.3",
-    "node-twitter": "^0.5.2"
+    "twit": "^1.1.19"
   }
 }

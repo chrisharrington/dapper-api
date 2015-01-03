@@ -4,7 +4,6 @@ var Promise = require("bluebird"),
     
     config = require("../config"),
     mapper = require("./mapper"),
-    sorter = require("./sorter"),
     cache = require("../cache");
 
 var API_LOCATION = "https://api.github.com/",
