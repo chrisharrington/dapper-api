@@ -1,8 +1,8 @@
 var Twitter = require("twit"),
     Promise = require("bluebird"),
     
-    mapper = require("./mapper"),
-    config = require("../config");
+    config = require("../config"),
+    steps = require("./steps");
 
 module.exports = function(consumerKey, consumerSecret, tokenKey, tokenSecret) {
     this._twitter = new Twitter({
@@ -18,10 +18,8 @@ module.exports = function(consumerKey, consumerSecret, tokenKey, tokenSecret) {
         return new Promise(function(resolve, reject) {
             this._twitter.get("statuses/user_timeline", function(err, data) {
                 if (err) reject(err);
-                else resolve(data);
+                else resolve(steps(data));
             });
-        }.bind(this)).then(function(tweets) {
-            return mapper.tweets(tweets);
-        });
+        }.bind(this));
     }
 };
