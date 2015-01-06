@@ -2,9 +2,9 @@ var _ = require("underscore");
 
 var steps = [
     require("./mapper"),
-    require("./urls"),
-    require("./hashtags"),
-    require("./users")
+    require("./users"),
+    require("./urls")
+    //require("./hashtags")
 ];
 
 module.exports = function(tweets) {
