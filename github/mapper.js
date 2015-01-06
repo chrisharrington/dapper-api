@@ -7,7 +7,7 @@ module.exports = {
         return _.map(repos, function(repo) {
             return {
                 id: repo.id,
-                timeago: moment(repo.pushed_at).fromNow(),
+                date: repo.pushed_at,
                 url: repo.html_url,
                 name: repo.name,
                 starCount: repo.stargazers_count
