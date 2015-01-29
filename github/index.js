@@ -4,6 +4,7 @@ var Promise = require("bluebird"),
     
     config = require("../config"),
     mapper = require("./mapper"),
+	sorter = require("./sorter"),
     cache = require("../cache");
 
 var API_LOCATION = "https://api.github.com/",
@@ -30,7 +31,7 @@ module.exports = function(token) {
                 direction: "desc"
             }, function(err, repos) {
                 if (err) reject(err);
-                else resolve(mapper.repos(repos));
+                else resolve(sorter.repos(mapper.repos(repos)));
             });
         });
     };
