@@ -18,21 +18,31 @@ module.exports = function(token) {
     
     this.repos = function() {
         return new Promise(function(resolve, reject) {
-            var github = new GitHubApi({
-                version: "3.0.0"
-            });
-            github.authenticate({
-                type: "oauth",
-                token: config.githubApiKey
-            })
-            github.repos.getAll({
-                type: "public",
-                sort: "pushed",
-                direction: "desc"
-            }, function(err, repos) {
-                if (err) reject(err);
-                else resolve(sorter.repos(mapper.repos(repos)));
-            });
+			var cached = cache.get(CACHE_KEY);
+			if (cached)
+				resolve(cached);
+			else {
+				var github = new GitHubApi({
+					version: "3.0.0"
+				});
+				github.authenticate({
+					type: "oauth",
+					token: config.githubApiKey
+				})
+				github.repos.getAll({
+					type: "public",
+					sort: "pushed",
+					direction: "desc"
+				}, function(err, repos) {
+					if (err)
+						reject(err);
+					else {
+						var sanitized = sorter.repos(mapper.repos(repos));
+						cache.set(CACHE_KEY, sanitized, moment().add(1, "h"));
+						resolve(sanitized);
+					}
+				});
+			}
         });
     };
 };
