@@ -22,8 +22,14 @@ module.exports = function(url) {
 		}]), {
 			headers: { "Content-Type": "application/json" }
 		}, function(error, response) {
-			if (error) resolve(0);
-			else resolve(response.body[0].result.metadata.globalCounts.count);
+			try {
+				if (error)
+					resolve(0);
+				else
+					resolve(response.body[0].result.metadata.globalCounts.count);
+			} catch (error) {
+				resolve(0);	
+			}
 		});
 		
 //		var req = http.request({

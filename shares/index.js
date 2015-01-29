@@ -4,6 +4,15 @@ var Promise = require("bluebird"),
 	util = require("util");
 
 module.exports = function(url) {
+	if (!url) {
+		return Promise.resolve({
+			twitter: 0,
+			facebook: 0,
+			linkedin: 0,
+			googleplus: 0
+		});
+	}
+	
 	return Promise.all([
 		require("./twitter")(url),
 		require("./facebook")(url),
